@@ -348,6 +348,32 @@ the value of this argument will be the section with subsituted variables.
 '<b> Willy is awesome </b>'.
 ]]]
 
+!! Dot notation
+
+Some times you may want a template to be used on a a conditional base (like in the previous examples) and also 
+show information inside the template. In that cases, dot notation is handy.
+Consider the following example, where a row inside a HTML table is shown only if the ==#twitter== value exist:
+
+[[[
+{{#twitter}}
+  <tr>
+    <td>
+      <b>Twitter</b></td>  
+    <td>
+      <a href="https://twitter.com/{{.}}">
+        {{.}}</a></td>
+  </tr>
+{{/twitter}}' asMustacheTemplate value: { #twitter -> '@pharoproject' } asDictionary
+   -->
+<tr>
+    <td>
+      <b>Twitter</b></td>   
+    <td>
+      <a href="https://twitter.com/@pharoproject">
+        @pharoproject</a></td>
+  </tr>
+]]]
+
 !! Inverted Sections
 
 A last use of sections is inverted sections. An inverted section begins with a caret
@@ -454,7 +480,6 @@ template
    <strong>Username</strong>
 '
 ]]]
-
 
 
 ! Miscellaneous
